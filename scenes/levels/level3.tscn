@@ -1,0 +1,149 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvw0t8vq4pxgt"]
+
+[ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_hf2gk"]
+[ext_resource type="PackedScene" uid="uid://di28rmpfikknn" path="res://scenes/objects/Wall.tscn" id="2_lbiqj"]
+[ext_resource type="PackedScene" uid="uid://b3qpbearlj6af" path="res://scenes/objects/hook_point.tscn" id="3_0bqnl"]
+[ext_resource type="PackedScene" uid="uid://bf2rbnthj5u7e" path="res://scenes/characters/enemy.tscn" id="4_trot2"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v8hcb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nyupa"]
+
+[node name="Level3" type="Node2D" node_paths=PackedStringArray("door_in", "door_out", "player_pos_in", "player_pos_out", "son_pos_in", "son_pos_out")]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_hf2gk")
+door_in = NodePath("Markers/inDoor")
+door_out = NodePath("Markers/outDoor")
+player_pos_in = NodePath("Markers/playerIn")
+player_pos_out = NodePath("Markers/playerOut")
+son_pos_in = NodePath("Markers/sonIn")
+son_pos_out = NodePath("Markers/sonOut")
+
+[node name="Walls" type="Node2D" parent="."]
+position = Vector2(0, -3.05176e-05)
+
+[node name="Wall_right" parent="Walls" instance=ExtResource("2_lbiqj")]
+position = Vector2(1262, 364)
+scale = Vector2(1.096, 7.5)
+physics_material_override = SubResource("PhysicsMaterial_v8hcb")
+
+[node name="Wall_left" parent="Walls" instance=ExtResource("2_lbiqj")]
+position = Vector2(19, 364)
+scale = Vector2(1.096, 7.5)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_up" parent="Walls" instance=ExtResource("2_lbiqj")]
+position = Vector2(637, 15)
+rotation = 1.5708
+scale = Vector2(1.15, 13.7)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down" parent="Walls" instance=ExtResource("2_lbiqj")]
+position = Vector2(639, 700)
+rotation = 1.5708
+scale = Vector2(1.149, 13.7)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down4" parent="Walls" instance=ExtResource("2_lbiqj")]
+position = Vector2(949, 260)
+rotation = 1.5708
+scale = Vector2(1.16, 6.1601)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down7" parent="Walls" instance=ExtResource("2_lbiqj")]
+position = Vector2(1079, 633)
+scale = Vector2(-0.758, 1.04)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down5" parent="Walls" instance=ExtResource("2_lbiqj")]
+position = Vector2(696, 419)
+rotation = 1.5708
+scale = Vector2(1.36, 6.50895)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down10" parent="Walls" instance=ExtResource("2_lbiqj")]
+position = Vector2(528, 554.667)
+rotation = 1.5708
+scale = Vector2(-0.858053, 8.06104)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down6" parent="Walls" instance=ExtResource("2_lbiqj")]
+position = Vector2(236.667, 161.333)
+rotation = 3.14159
+scale = Vector2(1.01333, 3.44228)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down9" parent="Walls" instance=ExtResource("2_lbiqj")]
+position = Vector2(134.667, 437.333)
+rotation = 3.14159
+scale = Vector2(0.773333, 2.77562)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down12" parent="Walls" instance=ExtResource("2_lbiqj")]
+position = Vector2(378, 469.333)
+rotation = 3.14159
+scale = Vector2(0.773333, 1.49562)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down8" parent="Walls" instance=ExtResource("2_lbiqj")]
+position = Vector2(1167, 595)
+rotation = 1.5708
+scale = Vector2(0.726153, 1.63367)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down11" parent="Walls" instance=ExtResource("2_lbiqj")]
+position = Vector2(662, 143)
+rotation = 1.5708
+scale = Vector2(0.726153, 1.35367)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="HookPoints" type="Node2D" parent="."]
+
+[node name="HookPoint4" parent="HookPoints" instance=ExtResource("3_0bqnl")]
+position = Vector2(276.667, 165.333)
+
+[node name="HookPoint9" parent="HookPoints" instance=ExtResource("3_0bqnl")]
+position = Vector2(1159.33, 415.333)
+
+[node name="HookPoint6" parent="HookPoints" instance=ExtResource("3_0bqnl")]
+position = Vector2(152.667, 428.667)
+
+[node name="HookPoint7" parent="HookPoints" instance=ExtResource("3_0bqnl")]
+position = Vector2(191.333, 80.6667)
+
+[node name="HookPoint8" parent="HookPoints" instance=ExtResource("3_0bqnl")]
+position = Vector2(30.6667, 266.667)
+
+[node name="HookPoint5" parent="HookPoints" instance=ExtResource("3_0bqnl")]
+position = Vector2(982, 293.333)
+
+[node name="HookPoint10" parent="HookPoints" instance=ExtResource("3_0bqnl")]
+position = Vector2(750, 204)
+
+[node name="HookPoint11" parent="HookPoints" instance=ExtResource("3_0bqnl")]
+position = Vector2(702.667, 58.6667)
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="inDoor" type="Marker2D" parent="Markers"]
+position = Vector2(624, 130)
+
+[node name="outDoor" type="Marker2D" parent="Markers"]
+position = Vector2(1193, 582)
+
+[node name="playerIn" type="Marker2D" parent="Markers"]
+position = Vector2(670, 131)
+
+[node name="playerOut" type="Marker2D" parent="Markers"]
+position = Vector2(1157, 575)
+
+[node name="sonIn" type="Marker2D" parent="Markers"]
+position = Vector2(713, 129)
+
+[node name="sonOut" type="Marker2D" parent="Markers"]
+position = Vector2(1121, 578)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Node2D" instance=ExtResource("4_trot2")]
+position = Vector2(670.667, 397.333)

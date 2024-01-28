@@ -1,0 +1,165 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxd2yhcbmjn4v"]
+
+[ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_hryb6"]
+[ext_resource type="PackedScene" uid="uid://di28rmpfikknn" path="res://scenes/objects/Wall.tscn" id="1_nnbxj"]
+[ext_resource type="PackedScene" uid="uid://b3qpbearlj6af" path="res://scenes/objects/hook_point.tscn" id="2_2kqjw"]
+[ext_resource type="PackedScene" uid="uid://bf2rbnthj5u7e" path="res://scenes/characters/enemy.tscn" id="4_b7oy6"]
+[ext_resource type="Texture2D" uid="uid://cdftp1jriuot0" path="res://art/Kings and Pigs/Sprites/12-Live and Coins/Live Bar.png" id="5_b8giq"]
+[ext_resource type="Texture2D" uid="uid://der30610n2eq5" path="res://art/Kings and Pigs/Sprites/09-Bomb/Bomb On (52x56).png" id="6_dcd7e"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v8hcb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nyupa"]
+
+[node name="Level2" type="Node2D" node_paths=PackedStringArray("door_in", "door_out", "player_pos_in", "player_pos_out", "son_pos_in", "son_pos_out")]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_hryb6")
+door_in = NodePath("Markers/inDoor")
+door_out = NodePath("Markers/outDoor")
+player_pos_in = NodePath("Markers/playerIn")
+player_pos_out = NodePath("Markers/playerOut")
+son_pos_in = NodePath("Markers/sonIn")
+son_pos_out = NodePath("Markers/sonOut")
+
+[node name="Walls" type="Node2D" parent="."]
+position = Vector2(0, -3.05176e-05)
+
+[node name="Wall_right" parent="Walls" instance=ExtResource("1_nnbxj")]
+position = Vector2(1262, 364)
+scale = Vector2(1.096, 7.5)
+physics_material_override = SubResource("PhysicsMaterial_v8hcb")
+
+[node name="Wall_left" parent="Walls" instance=ExtResource("1_nnbxj")]
+position = Vector2(19, 364)
+scale = Vector2(1.096, 7.5)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_up" parent="Walls" instance=ExtResource("1_nnbxj")]
+position = Vector2(637, 15)
+rotation = 1.5708
+scale = Vector2(1.15, 13.7)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down" parent="Walls" instance=ExtResource("1_nnbxj")]
+position = Vector2(639, 700)
+rotation = 1.5708
+scale = Vector2(1.149, 13.7)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down2" parent="Walls" instance=ExtResource("1_nnbxj")]
+position = Vector2(641, 535)
+rotation = 1.5708
+scale = Vector2(1, -3.9599)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down4" parent="Walls" instance=ExtResource("1_nnbxj")]
+position = Vector2(1149, 323)
+rotation = 1.5708
+scale = Vector2(1, -1.9999)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down6" parent="Walls" instance=ExtResource("1_nnbxj")]
+position = Vector2(161, 207)
+rotation = 1.5708
+scale = Vector2(1, -2.5599)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down3" parent="Walls" instance=ExtResource("1_nnbxj")]
+position = Vector2(180, 632)
+scale = Vector2(-0.758, 1.04)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down7" parent="Walls" instance=ExtResource("1_nnbxj")]
+position = Vector2(1079, 633)
+scale = Vector2(-0.758, 1.04)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down9" parent="Walls" instance=ExtResource("1_nnbxj")]
+position = Vector2(843, 601)
+scale = Vector2(1, 1.72)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down10" parent="Walls" instance=ExtResource("1_nnbxj")]
+position = Vector2(439, 601)
+scale = Vector2(1, 1.72)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down5" parent="Walls" instance=ExtResource("1_nnbxj")]
+position = Vector2(103, 594)
+rotation = 1.5708
+scale = Vector2(0.726153, 1.35367)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down8" parent="Walls" instance=ExtResource("1_nnbxj")]
+position = Vector2(1167, 595)
+rotation = 1.5708
+scale = Vector2(0.726153, 1.63367)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="Wall_down11" parent="Walls" instance=ExtResource("1_nnbxj")]
+position = Vector2(651, 318)
+rotation = 1.5708
+scale = Vector2(0.726153, 1.35367)
+physics_material_override = SubResource("PhysicsMaterial_nyupa")
+
+[node name="HookPoints" type="Node2D" parent="."]
+
+[node name="HookPoint" parent="HookPoints" instance=ExtResource("2_2kqjw")]
+position = Vector2(848, 407)
+
+[node name="HookPoint4" parent="HookPoints" instance=ExtResource("2_2kqjw")]
+position = Vector2(1054, 151)
+
+[node name="HookPoint2" parent="HookPoints" instance=ExtResource("2_2kqjw")]
+position = Vector2(270, 80)
+
+[node name="HookPoint3" parent="HookPoints" instance=ExtResource("2_2kqjw")]
+position = Vector2(444, 440)
+
+[node name="HookPoint6" parent="HookPoints" instance=ExtResource("2_2kqjw")]
+position = Vector2(123.333, 390.667)
+
+[node name="HookPoint5" parent="HookPoints" instance=ExtResource("2_2kqjw")]
+position = Vector2(590, 216)
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="inDoor" type="Marker2D" parent="Markers"]
+position = Vector2(52, 583)
+
+[node name="outDoor" type="Marker2D" parent="Markers"]
+position = Vector2(973, 681)
+
+[node name="playerIn" type="Marker2D" parent="Markers"]
+position = Vector2(90, 583)
+
+[node name="playerOut" type="Marker2D" parent="Markers"]
+position = Vector2(1025, 680)
+
+[node name="sonIn" type="Marker2D" parent="Markers"]
+position = Vector2(157, 581)
+
+[node name="sonOut" type="Marker2D" parent="Markers"]
+position = Vector2(914, 683)
+
+[node name="LiveBar" type="Sprite2D" parent="."]
+position = Vector2(1176, 559)
+texture = ExtResource("5_b8giq")
+
+[node name="LiveBar2" type="Sprite2D" parent="."]
+position = Vector2(194, 161)
+texture = ExtResource("5_b8giq")
+
+[node name="BombOn(52x56)" type="Sprite2D" parent="."]
+position = Vector2(296, 651)
+texture = ExtResource("6_dcd7e")
+
+[node name="BombOn(52x56)2" type="Sprite2D" parent="."]
+position = Vector2(614, 649)
+texture = ExtResource("6_dcd7e")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Node2D" instance=ExtResource("4_b7oy6")]
+position = Vector2(615.333, 518.667)
+points = Array[float]([-100.0, 100.0])
