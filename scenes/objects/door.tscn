@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4kmge74fjk2d"]
+
+[ext_resource type="Script" path="res://scenes/objects/door.gd" id="1_xd6fi"]
+[ext_resource type="Texture2D" uid="uid://chlwt1y4qheae" path="res://art/Kings and Pigs/Sprites/11-Door/Idle.png" id="1_y7my1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ah7j"]
+size = Vector2(32, 5)
+
+[node name="Door" type="Area2D"]
+scale = Vector2(2, 2)
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("1_xd6fi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -28)
+texture = ExtResource("1_y7my1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_8ah7j")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
