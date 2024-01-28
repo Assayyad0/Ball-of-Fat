@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://pdt37fhviqpw"]
+
+[ext_resource type="Texture2D" uid="uid://bp80wi57lcsfg" path="res://Kings and Pigs/Sprites/10-Cannon/Cannon Ball.png" id="1_rv7qq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_67v3u"]
+radius = 6.0
+
+[node name="Hook" type="Area2D"]
+collision_layer = 0
+collision_mask = 65
+priority = 15
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_rv7qq")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(23, 13, 12, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CircleShape2D_67v3u")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8

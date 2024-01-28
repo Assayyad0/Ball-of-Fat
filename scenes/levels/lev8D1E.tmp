@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bef5lv3uhqpru"]
+
+[ext_resource type="PackedScene" uid="uid://qfynyayv1752" path="res://scenes/characters/player.tscn" id="1_8jhtf"]
+[ext_resource type="Script" path="res://scenes/levels/level1.gd" id="1_25dvi"]
+[ext_resource type="PackedScene" uid="uid://b3qpbearlj6af" path="res://scenes/objects/hook_point.tscn" id="3_hfk4u"]
+[ext_resource type="PackedScene" uid="uid://di28rmpfikknn" path="res://scenes/objects/Wall.tscn" id="3_p2pbf"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_25dvi")
+
+[node name="Player" parent="." instance=ExtResource("1_8jhtf")]
+position = Vector2(585, 570)
+scale = Vector2(3, 3)
+
+[node name="HookPoint" parent="." instance=ExtResource("3_hfk4u")]
+position = Vector2(1020, 340)
+
+[node name="Walls" type="Node2D" parent="."]
+position = Vector2(0, -3.05176e-05)
+
+[node name="Wall_right" parent="Walls" instance=ExtResource("3_p2pbf")]
+position = Vector2(1134, 323)
+scale = Vector2(1, 6.84)
+
+[node name="Wall_left" parent="Walls" instance=ExtResource("3_p2pbf")]
+position = Vector2(15, 323)
+scale = Vector2(1, 6.84)
+
+[node name="Wall_up" parent="Walls" instance=ExtResource("3_p2pbf")]
+position = Vector2(553, 16)
+rotation = 1.5708
+scale = Vector2(1, 11.92)
+
+[node name="Wall_down" parent="Walls" instance=ExtResource("3_p2pbf")]
+position = Vector2(553, 627)
+rotation = 1.5708
+scale = Vector2(1, 11.92)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://di28rmpfikknn"]
+
+[ext_resource type="Texture2D" uid="uid://ceu53jcp1tc3x" path="res://Kings and Pigs/Sprites/14-TileSets/Terrain (32x32).png" id="1_3qo4e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecmja"]
+size = Vector2(30, 94)
+
+[node name="Wall" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_3qo4e")
+region_enabled = true
+region_rect = Rect2(159.831, 31.6418, 32.3179, 96.7144)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ecmja")

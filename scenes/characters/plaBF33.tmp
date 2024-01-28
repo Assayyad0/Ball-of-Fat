@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://qfynyayv1752"]
+
+[ext_resource type="Script" path="res://scenes/characters/player.gd" id="1_g54cu"]
+[ext_resource type="Texture2D" uid="uid://dl0nsbwmautqd" path="res://Kings and Pigs/Sprites/01-King Human/Idle (78x58).png" id="2_s78hu"]
+[ext_resource type="PackedScene" uid="uid://0iaamj5v6b70" path="res://scenes/objects/grapple_hook.tscn" id="3_kr48a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t01rr"]
+size = Vector2(20, 26)
+
+[node name="Player" type="CharacterBody2D"]
+floor_constant_speed = true
+script = ExtResource("1_g54cu")
+speed = 300.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_s78hu")
+region_enabled = true
+region_rect = Rect2(21.0253, 17.5941, 21.0804, 26.701)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t01rr")
+
+[node name="GrappleHook" parent="." instance=ExtResource("3_kr48a")]
+scale = Vector2(0.5, 0.5)
+speed = 600.0
+
+[connection signal="hook_reached_point" from="GrappleHook" to="." method="_on_grapple_hook_hook_reached_point"]
