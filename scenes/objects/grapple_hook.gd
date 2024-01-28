@@ -9,6 +9,7 @@ var hook_scene: PackedScene = preload("res://scenes/objects/hook.tscn")
 @export var check_dis: float = 15
 
 var moving: bool = false
+var returning: bool = false
 var hook_pos: Vector2
 var hook: Area2D = null
 var hook_timer: Timer = null
@@ -28,6 +29,12 @@ func _process(delta):
 	if moving:
 		hook.global_position += dir * speed * delta
 		look_at(get_global_mouse_position())
+	elif returning:
+		dir = ($Sprite2D/ShootingPoint.global_position - hook.global_position).normalized()
+		hook.global_position += dir * speed * 2.0 * delta
+		if hook.global_position.distance_to($Sprite2D/ShootingPoint.global_position) < check_dis:
+				hook.visible = false
+				returning = false
 	else: 
 		if hook_pos != Vector2.ZERO:
 			hook.global_position = hook_pos
@@ -49,14 +56,19 @@ func shoot():
 func check_distance(pos: Vector2):
 	if hook.global_position.distance_to(pos) <= check_dis:
 		end_grappling()
-		
+
+
 func end_grappling():
-	hook.visible = false
+	# hook.visible = false
 	moving = false
+	returning = true
 	hook_pos = Vector2.ZERO
 	hook_canceled.emit()
 
 func _on_hook_area_entered(area):
+	if returning:
+		return
+
 	print(area)
 	if area.name.begins_with("HookPoint"):
 		hook_timer.stop()

@@ -3,14 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://68bdobf7gf6g" path="res://art/Kings and Pigs/Sprites/09-Bomb/Bomb Off.png" id="1_pdp2v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sivt8"]
+radius = 7.0
 
 [node name="HookPoint" type="Area2D"]
+scale = Vector2(1.5, 1.5)
 collision_layer = 64
 collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(1.3, 1.3)
+position = Vector2(0, -1)
 texture = ExtResource("1_pdp2v")
 region_enabled = true
 region_rect = Rect2(20, 23, 13, 16)
