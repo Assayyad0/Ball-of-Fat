@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://pdt37fhviqpw"]
 
-[ext_resource type="Texture2D" uid="uid://bp80wi57lcsfg" path="res://Kings and Pigs/Sprites/10-Cannon/Cannon Ball.png" id="1_rv7qq"]
+[ext_resource type="Texture2D" uid="uid://bp80wi57lcsfg" path="res://art/Kings and Pigs/Sprites/10-Cannon/Cannon Ball.png" id="1_153m3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_67v3u"]
 radius = 6.0
@@ -13,7 +13,7 @@ priority = 15
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("1_rv7qq")
+texture = ExtResource("1_153m3")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(23, 13, 12, 12)

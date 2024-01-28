@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://qfynyayv1752"]
 
 [ext_resource type="Script" path="res://scenes/characters/player.gd" id="1_g54cu"]
-[ext_resource type="Texture2D" uid="uid://dl0nsbwmautqd" path="res://Kings and Pigs/Sprites/01-King Human/Idle (78x58).png" id="2_s78hu"]
+[ext_resource type="Texture2D" uid="uid://dl0nsbwmautqd" path="res://art/Kings and Pigs/Sprites/01-King Human/Idle (78x58).png" id="2_s78hu"]
 [ext_resource type="PackedScene" uid="uid://0iaamj5v6b70" path="res://scenes/objects/grapple_hook.tscn" id="3_kr48a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t01rr"]

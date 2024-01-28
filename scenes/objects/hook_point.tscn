@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3qpbearlj6af"]
 
-[ext_resource type="Texture2D" uid="uid://68bdobf7gf6g" path="res://Kings and Pigs/Sprites/09-Bomb/Bomb Off.png" id="1_pdp2v"]
+[ext_resource type="Texture2D" uid="uid://68bdobf7gf6g" path="res://art/Kings and Pigs/Sprites/09-Bomb/Bomb Off.png" id="1_pdp2v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sivt8"]
 

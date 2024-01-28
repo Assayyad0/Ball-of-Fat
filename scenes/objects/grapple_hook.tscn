@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://0iaamj5v6b70"]
 
-[ext_resource type="Texture2D" uid="uid://bk4tdujvedh2w" path="res://Kings and Pigs/Sprites/10-Cannon/Idle.png" id="1_71vec"]
+[ext_resource type="Texture2D" uid="uid://bk4tdujvedh2w" path="res://art/Kings and Pigs/Sprites/10-Cannon/Idle.png" id="1_71vec"]
 [ext_resource type="Script" path="res://scenes/objects/grapple_hook.gd" id="1_i5wfu"]
 
 [node name="GrappleHook" type="Node2D"]

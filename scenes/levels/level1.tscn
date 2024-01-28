@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scenes/levels/level1.gd" id="1_25dvi"]
 [ext_resource type="PackedScene" uid="uid://b3qpbearlj6af" path="res://scenes/objects/hook_point.tscn" id="3_hfk4u"]
 [ext_resource type="PackedScene" uid="uid://di28rmpfikknn" path="res://scenes/objects/Wall.tscn" id="3_p2pbf"]
+[ext_resource type="PackedScene" uid="uid://bf2rbnthj5u7e" path="res://scenes/characters/enemy.tscn" id="4_a3aaj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i7q2j"]
 
