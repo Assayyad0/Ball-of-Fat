@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bef5lv3uhqpru"]
+[gd_scene load_steps=7 format=3 uid="uid://bef5lv3uhqpru"]
 
 [ext_resource type="Script" path="res://scenes/levels/level1.gd" id="1_25dvi"]
 [ext_resource type="PackedScene" uid="uid://b3qpbearlj6af" path="res://scenes/objects/hook_point.tscn" id="3_hfk4u"]
@@ -69,3 +69,6 @@ position = Vector2(1035, 566)
 
 [node name="son" type="Marker2D" parent="Markers"]
 position = Vector2(1004, 569)
+
+[node name="Enemy" parent="." instance=ExtResource("4_a3aaj")]
+position = Vector2(546, 496)

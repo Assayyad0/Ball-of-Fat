@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf2rbnthj5u7e"]
+
+[ext_resource type="Script" path="res://scenes/characters/enemy.gd" id="1_6dyor"]
+[ext_resource type="Texture2D" uid="uid://iy12utywybb" path="res://art/Kings and Pigs/Sprites/02-King Pig/Idle (38x28).png" id="2_hd2y4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5bxl5"]
+size = Vector2(18, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lku6s"]
+size = Vector2(65, 10)
+
+[node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_6dyor")
+speed = 80.0
+points = Array[float]([-200.0, 200.0])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_hd2y4")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(11, 8, 18, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5bxl5")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_5bxl5")
+
+[node name="FieldOfView" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FieldOfView"]
+position = Vector2(32.5, -5)
+shape = SubResource("RectangleShape2D_lku6s")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="FieldOfView" to="." method="_on_field_of_view_area_entered"]
