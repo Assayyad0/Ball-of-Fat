@@ -6,6 +6,7 @@ signal hook_canceled
 var hook_scene: PackedScene = preload("res://scenes/objects/hook.tscn")
 
 @export var speed: float = 100
+@export var check_dis: float = 15
 
 var moving: bool = false
 var hook_pos: Vector2
@@ -46,7 +47,7 @@ func shoot():
 	moving = true
 	
 func check_distance(pos: Vector2):
-	if hook.global_position.distance_to(pos) <= 10:
+	if hook.global_position.distance_to(pos) <= check_dis:
 		end_grappling()
 		
 func end_grappling():
@@ -56,7 +57,7 @@ func end_grappling():
 	hook_canceled.emit()
 
 func _on_hook_area_entered(area):
-	print(area)		
+	print(area)
 	if area.name.begins_with("HookPoint"):
 		hook_timer.stop()
 		hook_pos = area.global_position

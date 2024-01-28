@@ -8,17 +8,14 @@ var grapple_direction: Vector2 = Vector2.ZERO
 var grabbed_son: CharacterBody2D = null
 var x_scale: float = 1
 var want_to_throw
+var grabber_pos: float
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	x_scale = self.scale.x
+	grabber_pos = $Grabber/CollisionShape2D.position.x
 
 func _process(delta):
-	if grapple_direction != Vector2.ZERO:
-		position += grapple_direction * speed * delta * 3
-		$GrappleHook.check_distance(global_position)
-	else:
-		move()
-
 	if grabbed_son != null:
 		grabbed_son.global_position = $Hand.global_position
 
@@ -26,6 +23,12 @@ func _process(delta):
 	grab()
 
 func _physics_process(delta):
+	if grapple_direction != Vector2.ZERO:
+		position += grapple_direction * speed * delta * 3
+		$GrappleHook.check_distance(global_position)
+	else:
+		move(delta)
+		
 	if !want_to_throw or grabbed_son == null:
 		return
 
@@ -34,30 +37,29 @@ func _physics_process(delta):
 	grabbed_son = null
 	want_to_throw = false
 
-func move():
+func move(delta):
 	if !can_move:
 		return
 
-	velocity.y = 500
-
-	var axis = int(Input.get_axis("left", "right"))
-	if axis == 0:
-		velocity.x = 0
+	if not is_on_floor():
+		velocity.y += gravity * delta
 	else:
-		velocity.x = axis * speed
+		velocity.y = 0
+
+	var dir = int(Input.get_axis("left", "right"))
+	velocity.x = dir * speed
 		
-		if axis < 0:
-			$Sprite2D.flip_h = true
-			$Grabber/CollisionShape2D.position.x = -15
-		if axis > 0:
-			$Sprite2D.flip_h = false
-			$Grabber/CollisionShape2D.position.x = 15
+	if dir < 0:
+		$Sprite2D.flip_h = true
+		$Grabber/CollisionShape2D.position.x = -grabber_pos
+	if dir > 0:
+		$Sprite2D.flip_h = false
+		$Grabber/CollisionShape2D.position.x = grabber_pos
 	
 	move_and_slide()
 	
 func grapple():
-	if Input.is_action_just_pressed("grapple") and is_on_floor():
-		# can_move = false
+	if Input.is_action_just_pressed("grapple"):
 		$GrappleHook.visible = true
 		$GrappleHook.shoot()
 
@@ -74,6 +76,7 @@ func grab():
 
 func _on_grapple_hook_hook_reached_point(pos):
 	can_move = false
+	velocity.y = 0
 	grapple_direction = (pos - position).normalized()
 
 func _on_grapple_hook_hook_canceled():

@@ -40,5 +40,13 @@ shape = SubResource("CircleShape2D_i57ps")
 [node name="Hand" type="Marker2D" parent="."]
 position = Vector2(0, -18)
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(15, 0)
+shape = SubResource("CircleShape2D_i57ps")
+
 [connection signal="hook_canceled" from="GrappleHook" to="." method="_on_grapple_hook_hook_canceled"]
 [connection signal="hook_reached_point" from="GrappleHook" to="." method="_on_grapple_hook_hook_reached_point"]
