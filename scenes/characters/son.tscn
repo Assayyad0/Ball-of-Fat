@@ -1,25 +1,37 @@
 [gd_scene load_steps=4 format=3 uid="uid://bdr8w3bkmftx8"]
 
 [ext_resource type="Script" path="res://scenes/characters/son.gd" id="1_8aapa"]
-[ext_resource type="Texture2D" uid="uid://cr4vj2w7t7roy" path="res://art/Kings and Pigs/Sprites/03-Pig/Idle (34x28).png" id="1_crvyx"]
+[ext_resource type="Texture2D" uid="uid://g6je8c0sn2fl" path="res://art/ours/son.png" id="3_20cv1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vx56c"]
-radius = 7.5
+radius = 8.30912
 
 [node name="Son" type="CharacterBody2D"]
 disable_mode = 2
 collision_layer = 2
+collision_mask = 9
 input_pickable = true
 script = ExtResource("1_8aapa")
+bounce_factor = 0.6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-scale = Vector2(6, 6)
-texture = ExtResource("1_crvyx")
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("3_20cv1")
 flip_h = true
 region_enabled = true
-region_rect = Rect2(10.8635, 10.8639, 18.2426, 16.8913)
+region_rect = Rect2(229, 70, 1604, 1914)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(6.5, 6.5)
 shape = SubResource("CircleShape2D_vx56c")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(1.2, 1.2)
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(6.5, 6.5)
+shape = SubResource("CircleShape2D_vx56c")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

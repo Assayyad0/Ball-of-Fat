@@ -1,13 +1,11 @@
 extends CharacterBody2D
 
 @export var speed: float = 10
-@export var throw_force: float = 1000
 
 var can_move: bool = true
 var grapple_direction: Vector2 = Vector2.ZERO
 var grabbed_son: CharacterBody2D = null
 var x_scale: float = 1
-var want_to_throw
 var grabber_pos: float
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -19,8 +17,8 @@ func _process(delta):
 	if grabbed_son != null:
 		grabbed_son.global_position = $Hand.global_position
 
-	grapple()
-	grab()
+	_grapple()
+	_grab()
 
 func _physics_process(delta):
 	if grapple_direction != Vector2.ZERO:
@@ -28,14 +26,6 @@ func _physics_process(delta):
 		$GrappleHook.check_distance(global_position)
 	else:
 		move(delta)
-		
-	if !want_to_throw or grabbed_son == null:
-		return
-
-	var dir = (get_global_mouse_position() - grabbed_son.global_position).normalized()
-	grabbed_son.velocity = dir * throw_force
-	grabbed_son = null
-	want_to_throw = false
 
 func move(delta):
 	if !can_move:
@@ -58,12 +48,12 @@ func move(delta):
 	
 	move_and_slide()
 	
-func grapple():
+func _grapple():
 	if Input.is_action_just_pressed("grapple"):
 		$GrappleHook.visible = true
 		$GrappleHook.shoot()
 
-func grab():
+func _grab():
 	if Input.is_action_just_pressed("grab"):
 		if grabbed_son == null:
 			var bodies = $Grabber.get_overlapping_bodies()
@@ -72,9 +62,17 @@ func grab():
 					grabbed_son = body
 					break
 		else:
-			want_to_throw = true
+			grabbed_son.throw()
+			grabbed_son = null
+
+func die():
+	get_parent().remove_child(self)
 
 func _on_grapple_hook_hook_reached_point(pos):
+	if grabbed_son != null:
+		$GrappleHook.end_grappling()
+		return 
+	
 	can_move = false
 	velocity.y = 0
 	grapple_direction = (pos - position).normalized()
