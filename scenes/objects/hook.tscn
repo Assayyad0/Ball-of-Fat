@@ -1,19 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://pdt37fhviqpw"]
+[gd_scene load_steps=5 format=3 uid="uid://pdt37fhviqpw"]
 
 [ext_resource type="Texture2D" uid="uid://criu6we3ccohh" path="res://art/ours/hook.png" id="1_grijf"]
+[ext_resource type="Texture2D" uid="uid://dypcw25l83d4x" path="res://art/downloaded/hook.png" id="1_t7a17"]
 
 [sub_resource type="GDScript" id="GDScript_ru8av"]
 script/source = "extends Area2D
 
 signal hook_touch
 
+var _shooting_point: Node2D
+
+func set_shooting_point(shooting_point):
+	self._shooting_point = shooting_point
+
+func _process(_delta):
+	$Line2D.points[1] = to_local(self._shooting_point.global_position)
+
 func _on_area_2d_area_entered(area):
-	print(\"hook?\")
 	hook_touch.emit()
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_67v3u"]
-radius = 5.625
+radius = 8.125
 
 [node name="Hook" type="Area2D"]
 scale = Vector2(2, 2)
@@ -23,7 +31,16 @@ priority = 15
 script = SubResource("GDScript_ru8av")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 3.41037
+position = Vector2(0, -0.5)
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("1_t7a17")
+region_enabled = true
+region_rect = Rect2(597, 40, 252, 401)
+
+[node name="Sprite2D old" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-2, -1.49012e-08)
+rotation = -1.48353
 scale = Vector2(0.007, 0.007)
 texture = ExtResource("1_grijf")
 flip_h = true
@@ -34,5 +51,8 @@ region_rect = Rect2(578, 128, 996, 1773)
 scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_67v3u")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.8
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(-3.5, 0)
+points = PackedVector2Array(0, 0, 0, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)

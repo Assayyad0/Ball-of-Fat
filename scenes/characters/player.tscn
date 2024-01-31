@@ -1,17 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://qfynyayv1752"]
+[gd_scene load_steps=8 format=3 uid="uid://qfynyayv1752"]
 
 [ext_resource type="Script" path="res://scenes/characters/player.gd" id="1_g54cu"]
-[ext_resource type="Texture2D" uid="uid://rvwmf1krdfbu" path="res://art/ours/spy.png" id="2_67cv7"]
+[ext_resource type="Script" path="res://scenes/characters/movement.gd" id="2_bmumh"]
+[ext_resource type="Texture2D" uid="uid://rvwmf1krdfbu" path="res://art/ours/spy_idle.png" id="2_btcd5"]
+[ext_resource type="Texture2D" uid="uid://vpux6sfpmw6d" path="res://art/ours/spy_carrying.png" id="3_h7sjt"]
 [ext_resource type="PackedScene" uid="uid://0iaamj5v6b70" path="res://scenes/objects/grapple_hook.tscn" id="3_kr48a"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t01rr"]
-size = Vector2(10, 40)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hgief"]
 height = 40.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2a3cv"]
-height = 40.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t01rr"]
+size = Vector2(10, 40)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
@@ -20,21 +19,28 @@ collision_mask = 9
 floor_constant_speed = true
 script = ExtResource("1_g54cu")
 speed = 300.0
+metadata/_edit_horizontal_guides_ = [-301.0]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Movement" type="Node2D" parent="."]
+script = ExtResource("2_bmumh")
+speed = 300.0
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Idle" type="Sprite2D" parent="Sprites"]
 position = Vector2(0, -20)
 scale = Vector2(0.02, 0.02)
-texture = ExtResource("2_67cv7")
+texture = ExtResource("2_btcd5")
 region_enabled = true
 region_rect = Rect2(688, 35, 663, 1988)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -20)
-shape = SubResource("RectangleShape2D_t01rr")
-
-[node name="GrappleHook" parent="." instance=ExtResource("3_kr48a")]
-position = Vector2(0, -27)
-scale = Vector2(0.5, 0.5)
+[node name="Carry" type="Sprite2D" parent="Sprites"]
+visible = false
+position = Vector2(0, -23)
+scale = Vector2(0.0246867, 0.0246867)
+texture = ExtResource("3_h7sjt")
+region_enabled = true
+region_rect = Rect2(799, 89, 601, 1872)
 
 [node name="Grabber" type="Area2D" parent="."]
 position = Vector2(0, -20)
@@ -45,17 +51,22 @@ collision_mask = 2
 position = Vector2(9, 0)
 shape = SubResource("CapsuleShape2D_hgief")
 
-[node name="Hand" type="Marker2D" parent="."]
-position = Vector2(0, -45)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_t01rr")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, -20)
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(9, 0)
-shape = SubResource("CapsuleShape2D_2a3cv")
+shape = SubResource("RectangleShape2D_t01rr")
 
-[connection signal="hook_canceled" from="GrappleHook" to="." method="_on_grapple_hook_hook_canceled"]
-[connection signal="hook_reached_point" from="GrappleHook" to="." method="_on_grapple_hook_hook_reached_point"]
+[node name="Hand" type="Marker2D" parent="."]
+position = Vector2(0, -58)
+
+[node name="GrappleHook" parent="." instance=ExtResource("3_kr48a")]
+position = Vector2(0, -27)
+scale = Vector2(0.5, 0.5)
