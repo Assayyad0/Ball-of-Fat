@@ -2,6 +2,9 @@
 .godot/
 .vscode/
 
+# Temporary files
+*.tmp
+
 # Godot-specific ignores
 .import/
 export.cfg
