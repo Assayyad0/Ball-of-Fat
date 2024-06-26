@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed: float = 300
 @export var flip_check_dis: float = 1
-@export var points: Array[float] = [-50, 50]
+@export var points: Array[float] = [-50,50]
 
 var current_point_index: int = 0
 var fov_pos: float

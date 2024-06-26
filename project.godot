@@ -14,12 +14,15 @@ config/name="GGJ 2024"
 config/version="0.1.0"
 run/main_scene="res://scenes/levels/level_manager.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/wakatime/plugin.cfg")
 
 [input]
 

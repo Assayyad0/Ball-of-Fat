@@ -13,5 +13,6 @@ script = ExtResource("1_fih0i")
 levels = Array[PackedScene]([ExtResource("2_otg3s"), ExtResource("3_wwgwd"), ExtResource("4_23blb"), ExtResource("5_i5514")])
 
 [node name="Player" parent="." instance=ExtResource("2_h137a")]
+position = Vector2(81, 43)
 
 [node name="Son" parent="." instance=ExtResource("3_60y26")]
